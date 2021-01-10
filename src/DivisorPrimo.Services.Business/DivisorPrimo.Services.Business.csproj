@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DivisorPrimo.Domain\DivisorPrimo.Domain.csproj" />
+    <ProjectReference Include="..\DivisorPrimo.Infra.Data\DivisorPrimo.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

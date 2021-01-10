@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DivisorPrimo.Application\DivisorPrimo.Application.csproj" />
+    <ProjectReference Include="..\DivisorPrimo.Domain\DivisorPrimo.Domain.csproj" />
+    <ProjectReference Include="..\DivisorPrimo.Infra.CrossCutting.Identity\DivisorPrimo.Infra.CrossCutting.Identity.csproj" />
+    <ProjectReference Include="..\DivisorPrimo.Infra.Data\DivisorPrimo.Infra.Data.csproj" />
+    <ProjectReference Include="..\DivisorPrimo.Services.Business\DivisorPrimo.Services.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>

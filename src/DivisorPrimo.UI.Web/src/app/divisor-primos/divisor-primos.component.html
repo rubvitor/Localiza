@@ -1,0 +1,43 @@
+<div class="main-content" style="height: 100% !important;">
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="numero">Número</label>
+                <input matInput class="form-control" (keypress)="calcularDivisorPrimo($event)" name="numero" type="number" [(ngModel)]="numero">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <button type="button" style="float: right;" class="btn btn-primary" (click)="calcularDivisorPrimo()">Calcular</button>
+            </div>
+        </div>
+      </div>
+      <div *ngIf="divisorPrimoRetorno" class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-primary">
+                      <h4 class="card-title ">Divisores Primos</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="d-flex">
+                    <div class="card" style="margin: 5px;">
+                        <div class="card-body">
+                            <div class="d-flex no-block">
+                                <div class="align-self-center" style="width: 100%;">
+                                    <h6 class="text-muted m-t-10 m-b-0">Primos</h6>
+                                    <ng-container class="m-t-0" *ngFor="let primo of divisorPrimoRetorno.numerosPrimos"><span style="white-space: nowrap !important;">{{primo}}</span>&nbsp;&nbsp;&nbsp;&nbsp;</ng-container>
+                                    <br><br>
+                                    <h6 class="text-muted m-t-10 m-b-0">Divisores</h6>
+                                    <ng-container *ngFor="let divisor of divisorPrimoRetorno.divisores"><span style="white-space: nowrap !important;">{{divisor}}</span>&nbsp;&nbsp;&nbsp;&nbsp;</ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
