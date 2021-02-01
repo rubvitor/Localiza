@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using DivisorPrimo.Domain.Models;
+using DivisorPrimo.Services.Redis;
 
 namespace DivisorPrimo.Services.Business
 {
@@ -13,9 +14,11 @@ namespace DivisorPrimo.Services.Business
         string nomeFilaDivisor = "divisor";
         string nomeFilaPrimo = "primo";
         protected IHubContext<NumeroBusiness> _context;
-        public NumeroBusiness(IHubContext<NumeroBusiness> context)
+        private readonly IRedisClient _redisClient;
+        public NumeroBusiness(IHubContext<NumeroBusiness> context, IRedisClient redisClient)
         {
             _context = context;
+            _redisClient = redisClient;
         }
 
         public void CalculaDivisoresPrimos(int numero, string traceId)
@@ -28,18 +31,24 @@ namespace DivisorPrimo.Services.Business
         {
             if (numero == 1)
             {
+                _redisClient.AdicionaDivisorPrimo(numero, 1);
                 _context.Clients.All.SendAsync(nomeFilaDivisor, traceId, numero);
                 return;
             }
 
+            _redisClient.AdicionaDivisorPrimo(numero, 1);
             _context.Clients.All.SendAsync(nomeFilaDivisor, traceId, 1);
 
             Parallel.For(2, (numero / 2) + 1, idx =>
             {
                 if (numero % idx == 0)
+                {
+                    _redisClient.AdicionaDivisorPrimo(numero, idx);
                     _context.Clients.All.SendAsync(nomeFilaDivisor, traceId, idx);
+                }
             });
 
+            _redisClient.AdicionaDivisorPrimo(numero, numero);
             _context.Clients.All.SendAsync(nomeFilaDivisor, traceId, numero);
         }
 
@@ -72,11 +81,17 @@ namespace DivisorPrimo.Services.Business
             var thread = Parallel.For(2, numero, idx =>
             {
                 if (VerificaPrimo(idx))
+                {
+                    _redisClient.AdicionaDivisorPrimo(numero, idx);
                     _context.Clients.All.SendAsync(nomeFilaPrimo, traceId, idx);
+                }
             });
 
             if (VerificaPrimo(numero))
+            {
+                _redisClient.AdicionaDivisorPrimo(numero, numero);
                 _context.Clients.All.SendAsync(nomeFilaPrimo, traceId, numero);
+            }
         }
 
         private bool VerificaPrimo(int numero)

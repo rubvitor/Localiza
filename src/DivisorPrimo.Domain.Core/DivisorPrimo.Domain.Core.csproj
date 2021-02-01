@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.Xpo" Version="20.2.4" />
+    <PackageReference Include="DevExpress.Xpo" Version="20.2.5" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.2" />
     <PackageReference Include="NetDevPack" Version="1.1.0" />
   </ItemGroup>
 

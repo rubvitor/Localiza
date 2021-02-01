@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DivisorPrimo.Services.Redis\DivisorPrimo.Services.Redis.csproj" />
     <ProjectReference Include="..\DivisorPrimo.Domain\DivisorPrimo.Domain.csproj" />
     <ProjectReference Include="..\DivisorPrimo.Infra.Data\DivisorPrimo.Infra.Data.csproj" />
   </ItemGroup>

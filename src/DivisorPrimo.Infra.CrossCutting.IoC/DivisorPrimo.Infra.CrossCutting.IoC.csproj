@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DivisorPrimo.Services.Redis\DivisorPrimo.Services.Redis.csproj" />
     <ProjectReference Include="..\DivisorPrimo.Application\DivisorPrimo.Application.csproj" />
     <ProjectReference Include="..\DivisorPrimo.Domain\DivisorPrimo.Domain.csproj" />
     <ProjectReference Include="..\DivisorPrimo.Infra.CrossCutting.Identity\DivisorPrimo.Infra.CrossCutting.Identity.csproj" />

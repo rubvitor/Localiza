@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivisorPrimo.Services.Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DivisorPrimo.Test", "src\DivisorPrimo.Test\DivisorPrimo.Test\DivisorPrimo.Test.csproj", "{C468BBAD-E9B0-47CE-B67D-C91D4E354647}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivisorPrimo.Services.Redis", "DivisorPrimo.Services.Redis\DivisorPrimo.Services.Redis.csproj", "{7FBBFBE0-2001-4465-A67C-46DBA2FE09EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{C468BBAD-E9B0-47CE-B67D-C91D4E354647}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C468BBAD-E9B0-47CE-B67D-C91D4E354647}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C468BBAD-E9B0-47CE-B67D-C91D4E354647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FBBFBE0-2001-4465-A67C-46DBA2FE09EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FBBFBE0-2001-4465-A67C-46DBA2FE09EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FBBFBE0-2001-4465-A67C-46DBA2FE09EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FBBFBE0-2001-4465-A67C-46DBA2FE09EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{08993E58-58D8-4623-9687-D080E70AD613} = {554CAF06-5BF7-49E4-A507-002BAD928CEB}
 		{6C1D81EF-D244-4F4D-A634-F97A140D8A11} = {13DB9370-D429-4613-8F67-561294A9FACA}
 		{C468BBAD-E9B0-47CE-B67D-C91D4E354647} = {000125E3-30C6-4938-8856-4136859075B9}
+		{7FBBFBE0-2001-4465-A67C-46DBA2FE09EB} = {13DB9370-D429-4613-8F67-561294A9FACA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA4494CB-C2E9-4618-9E01-F8073BC388C7}

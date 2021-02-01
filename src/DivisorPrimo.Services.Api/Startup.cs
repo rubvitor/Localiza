@@ -85,6 +85,8 @@ namespace DivisorPrimo.Services.API
             });
 
             services.AddSignalR();
+
+            services.AddMemoryCache();
         }
 
         public static void Configure(IApplicationBuilder app,

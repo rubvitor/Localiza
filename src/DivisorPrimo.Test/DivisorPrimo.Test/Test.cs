@@ -19,7 +19,7 @@ namespace DivisorPrimo.Test
         public async Task Verifica_Numeros_Primos_Retornam_Correto()
         {
             NumeroCommand command = new NumeroCommand(20);
-            NumeroCommandHandler handler = new NumeroCommandHandler(new NumeroBusiness(null));
+            NumeroCommandHandler handler = new NumeroCommandHandler(new NumeroBusiness(null, null), null);
 
             var retorno = await handler.Handle(command, new System.Threading.CancellationToken()) as ValidationResultModel;
 
@@ -34,7 +34,7 @@ namespace DivisorPrimo.Test
         public async Task Verifica_Divisores_Retornam_Correto()
         {
             NumeroCommand command = new NumeroCommand(20);
-            NumeroCommandHandler handler = new NumeroCommandHandler(new NumeroBusiness(null));
+            NumeroCommandHandler handler = new NumeroCommandHandler(new NumeroBusiness(null, null), null);
 
             var retorno = await handler.Handle(command, new System.Threading.CancellationToken()) as ValidationResultModel;
 
@@ -52,7 +52,7 @@ namespace DivisorPrimo.Test
         public async Task Deve_Retornar_Excecao_Quando_Numero_For_Menor_Igual_Zero(int numero)
         {
             NumeroCommand command = new NumeroCommand(numero);
-            NumeroCommandHandler handler = new NumeroCommandHandler(new NumeroBusiness(null));
+            NumeroCommandHandler handler = new NumeroCommandHandler(new NumeroBusiness(null, null), null);
 
             var retorno = await handler.Handle(command, new System.Threading.CancellationToken()) as ValidationResultModel;
 

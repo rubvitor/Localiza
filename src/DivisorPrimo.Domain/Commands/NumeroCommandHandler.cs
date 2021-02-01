@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DivisorPrimo.Domain.Interfaces;
 using DivisorPrimo.Domain.Models;
+using DivisorPrimo.Services.Redis;
 using FluentValidation.Results;
 using MediatR;
 using NetDevPack.Messaging;
@@ -14,9 +15,11 @@ namespace DivisorPrimo.Domain.Commands
         IRequestHandler<NumeroCommand, object>
     {
         private readonly INumeroBusiness _numeroBusiness;
-        public NumeroCommandHandler(INumeroBusiness numeroBusiness)
+        private readonly IRedisClient _redisClient;
+        public NumeroCommandHandler(INumeroBusiness numeroBusiness, IRedisClient redisClient)
         {
             this._numeroBusiness = numeroBusiness;
+            _redisClient = redisClient;
         }
 
         public async Task<object> Handle(NumeroCommand message, CancellationToken cancellationToken)
@@ -34,7 +37,13 @@ namespace DivisorPrimo.Domain.Commands
             try
             {
                 if (!string.IsNullOrEmpty(message.TraceId))
-                    Task.Run(() => _numeroBusiness.CalculaDivisoresPrimos(message.NumeroBase, message.TraceId));
+                {
+                    var numerosPrimosCache = await _redisClient.RetornaDivisorPrimo(message.NumeroBase);
+                    if (numerosPrimosCache == null)
+                        Task.Run(() => _numeroBusiness.CalculaDivisoresPrimos(message.NumeroBase, message.TraceId));
+                    else
+                        return numerosPrimosCache;
+                }
                 else
                     divisorPrimoModel = _numeroBusiness.RetornaDivisoresPrimos(message.NumeroBase);
             }

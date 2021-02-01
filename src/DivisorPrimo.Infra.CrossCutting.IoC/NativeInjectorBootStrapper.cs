@@ -16,6 +16,7 @@ using FluentValidation.Results;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using NetDevPack.Mediator;
+using DivisorPrimo.Services.Redis;
 
 namespace DivisorPrimo.Infra.CrossCutting.IoC
 {
@@ -45,6 +46,8 @@ namespace DivisorPrimo.Infra.CrossCutting.IoC
             services.AddScoped<EventStoreSqlContext>();
 
             services.AddScoped<INumeroBusiness, NumeroBusiness>();
+
+            services.AddScoped<IRedisClient, RedisClient>();
         }
     }
 }
